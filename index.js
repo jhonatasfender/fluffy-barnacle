@@ -14,7 +14,7 @@ app.get('/', function (request, response) {
   fs.readdirSync('C:\\Users\\jonatas.rodrigues\\Downloads\\EDU_FPOVAR_19\\unidade_1\\ebook\\sections').forEach(file => {
     if (file.indexOf('html') != -1) {
       let content = fs.readFileSync(directory + '\\' + file).toString()
-      let split = content.match(/data:image(.*)\"/g)
+      let split = content.match(/data:image(.*)(\"|\&quot\;)/g)
       if (split) {
         for (const svg of split) {
           listSvg.push(svg.substring(0,svg.length - 1))

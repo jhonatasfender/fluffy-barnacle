@@ -9,11 +9,13 @@
 </head>
 
 <body>
-  <div class="row">
-    <% for(const html of svg) { %>
-      <div class="col-12"> <img src="<%= html %>" alt="" srcset="" /></div>
-    <% } %>
-  </div>
+  <form action="" method="post">
+    <div class="row">
+      <% for(const html of svg) { %>
+        <div class="col-12"> <img src="<%= html %>" alt="" srcset="" /></div>
+      <% } %>
+    </div>
+  </form>
 </body>
 
 </html>
