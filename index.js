@@ -13,8 +13,8 @@ app.get('/', function (request, response) {
   var listSvg = []
   fs.readdirSync(directory).forEach(file => {
     if (file.indexOf('html') != -1) {
-      let content = fs.readFileSync(directory + '\\' + file).toString()
-      let split = content.match(/data:image(.*?)("|\&quot\;)/g)
+      const content = fs.readFileSync(directory + '\\' + file).toString()
+      const split = content.match(/data:image(.*?)("|\&quot\;)/g)
       if (split) {
         for (const svg of split) {
           if (svg.indexOf('&quot;') === -1) {
