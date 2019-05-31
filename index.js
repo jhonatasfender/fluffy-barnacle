@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-const directory = '/home/jonatas/Downloads/EDU_FPOVAR_19 (2)/EDU_FPOVAR_19/unidade_1/ebook/sections/'
+const directory = 'C:\\Users\\jonatas.rodrigues\\Downloads\\EDU_FPOVAR_19\\unidade_1\\ebook\\sections'
 
 app.set('view engine', 'ejs');
 
@@ -14,10 +14,14 @@ app.get('/', function (request, response) {
   fs.readdirSync(directory).forEach(file => {
     if (file.indexOf('html') != -1) {
       let content = fs.readFileSync(directory + '\\' + file).toString()
-      let split = content.match(/data:image(.*)(\"|\&quot\;)/g)
+      let split = content.match(/data:image(.*?)("|\&quot\;)/g)
       if (split) {
         for (const svg of split) {
-          listSvg.push(svg.substring(0,svg.length - 1))
+          if (svg.indexOf('&quot;') === -1) {
+            listSvg.push(svg.substring(0, svg.length - 1))
+          } else {
+            listSvg.push(svg.replace('&quot;', ''))
+          }
         }
       }
     }
