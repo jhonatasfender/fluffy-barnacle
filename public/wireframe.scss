@@ -143,3 +143,49 @@ form {
     }
   }
 }
+
+.container {
+  .row {
+    .col-md-4 {
+      &.p-3 {
+        .card {
+          background-color: rgba(97, 97, 97, 0.5607843137254902);
+
+          &.box-shadow {
+            .card-img-top {
+              max-height: 100px;
+              padding: 11px;
+            }
+          }
+
+          .card-body {
+            .form-group {
+              input {
+                background-color: #656565;
+                color: #fff;
+
+                &::placeholder {
+                  color: #fff;
+                }
+              }
+
+              small {
+                color: red !important;
+                letter-spacing: 0;
+                line-height: 26px;
+              }
+            }
+
+            .d-flex {
+              &.justify-content-end {
+                .text-muted {
+                  color: #ffffff !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
