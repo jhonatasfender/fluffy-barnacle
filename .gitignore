@@ -4,3 +4,5 @@ package-lock.json
 
 .sass-cache
 *.map
+!public/uploads/.gitkeep
+public/uploads/*
