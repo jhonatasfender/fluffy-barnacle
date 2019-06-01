@@ -1,5 +1,9 @@
 node_modules
 .vscode
 package-lock.json
-*.map
+
 .sass-cache
+*.map
+!public/uploads/.gitkeep
+public/uploads/*
+
