@@ -59,6 +59,19 @@ app.post('/upload-file', upload.array('file', 12), (request, response) => {
   response.redirect('/')
 })
 
+app.post('/replace', (request, response) => {
+  const chunks = [];
+  request.on('data', chunk => chunks.push(chunk));
+  request.on('end', () => {
+    for (const line of chunks.toString().split( '\n' )) {
+      
+    }
+    // files[file-1559468328564-t2r7i][1][link]=\r
+    // files[file-1559468328564-t2r7i][1][img]=data
+    debugger
+  })
+})
+
 app.listen(app.get('port'), () => {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
