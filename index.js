@@ -63,8 +63,16 @@ app.post('/replace', (request, response) => {
   const chunks = [];
   request.on('data', chunk => chunks.push(chunk));
   request.on('end', () => {
+    const file = [];
+    let count = 0;
     for (const line of chunks.toString().split( '\n' )) {
-      
+      let separetor = line.split(/[\[\]]/);
+      if(!file[count] && !file[count].namefile) {
+        file[count] = {
+          namefile: separetor[1],
+          data: []
+        }
+      }
     }
     // files[file-1559468328564-t2r7i][1][link]=\r
     // files[file-1559468328564-t2r7i][1][img]=data
