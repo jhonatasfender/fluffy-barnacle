@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const multer = require('multer');
 const app = express();
 
-const directory = 'C:\\Users\\jonatas.rodrigues\\Downloads\\EDU_FPOVAR_19\\unidade_1\\ebook\\sections'
 const listSvg = []
 
 app.set('view engine', 'ejs');
@@ -56,19 +55,35 @@ app.post('/upload-file', upload.array('file', 12), (request, response) => {
     });
   }
 
-  response.redirect('/')
+  if (listSvg.length) {
+    response.redirect('/')
+  }
 })
 
 app.post('/replace', (request, response) => {
   const chunks = [];
+
   request.on('data', chunk => chunks.push(chunk));
+
   request.on('end', () => {
-    for (const line of chunks.toString().split( '\n' )) {
-      
+    let list = [],
+      count = 0;
+    for (const line of chunks.toString().split('\n')) {
+      let struct = line.split(/[\[\]]+/);
+      if (list[count] === undefined) {
+        list[count] = {
+          fileName: struct[1],
+          data: []
+        }
+      }
+      if (list[count].data[struct[2]] === undefined) {
+        list[count].data[struct[2]] = {};
+      }
+      list[count].data[struct[2]][struct[3]] = struct[4];
     }
     // files[file-1559468328564-t2r7i][1][link]=\r
     // files[file-1559468328564-t2r7i][1][img]=data
-    debugger
+    console.log(list);
   })
 })
 
