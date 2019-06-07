@@ -93,6 +93,31 @@ $value in $theme-colors {
   min-height: 100%;
 }
 
+.navbar {
+  &.navbar-dark {
+    &.bg-dark {
+      background-color: #9a8f8f !important;
+
+      .container {
+        &.d-flex {
+          &.justify-content-between {
+            .navbar-brand {
+              &.d-flex {
+                &.align-items-center {
+                  svg {
+                    width: 3rem;
+                    fill: #e8e8e8;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .custon-form {
   button {
     color: #fff;
@@ -146,40 +171,42 @@ $value in $theme-colors {
 
 .container {
   .row {
-    .col-md-4 {
-      &.p-3 {
-        .card {
-          background-color: rgba(97, 97, 97, 0.5607843137254902);
+    .col-md-6 {
+      &.col-lg-4 {
+        &.p-2 {
+          .card {
+            background-color: rgba(97, 97, 97, 0.5607843137254902);
 
-          &.box-shadow {
-            .card-img-top {
-              max-height: 100px;
-              padding: 11px;
+            &.box-shadow {
+              .card-img-top {
+                max-height: 100px;
+                padding: 11px;
+              }
             }
-          }
 
-          .card-body {
-            .form-group {
-              input {
-                background-color: #656565;
-                color: #fff;
-
-                &::placeholder {
+            .card-body {
+              .form-group {
+                input {
+                  background-color: #656565;
                   color: #fff;
+
+                  &::placeholder {
+                    color: #fff;
+                  }
+                }
+
+                small {
+                  color: red !important;
+                  letter-spacing: 0;
+                  line-height: 26px;
                 }
               }
 
-              small {
-                color: red !important;
-                letter-spacing: 0;
-                line-height: 26px;
-              }
-            }
-
-            .d-flex {
-              &.justify-content-end {
-                .text-muted {
-                  color: #ffffff !important;
+              .d-flex {
+                &.justify-content-end {
+                  .text-muted {
+                    color: #ffffff !important;
+                  }
                 }
               }
             }

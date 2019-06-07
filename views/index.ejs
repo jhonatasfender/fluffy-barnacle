@@ -43,7 +43,7 @@
   <div class="navbar navbar-dark bg-dark">
     <div class="container d-flex justify-content-between">
       <a href="#" class="navbar-brand d-flex align-items-center">
-        <i class="fa d-inline fa-camera mr-2"></i>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO0SURBVHhe7Z25qhRBGIWvoKmCgaKCL+CKiJEKgoFLqEaGok+gYGCuGLkgooFLoImBoKHLExiIy0O4BCoIKm7njBa0w3juwPRU1V99PvjgTs9lus79p/ufWz10LRhjjDHGGGOMMcaYGlgNT8Dr8CF8VLkc4zXIMXPszbAe3oY/4K+gcuy3ILOE5iD8BLvh3sBncNK7siY5xrewO/aP8AAMyRH4HTII32F34Ha4BEaBY+WY78J0hDPTYRiKrfAzZIAPcB+MDjMwCzMx2yYYhqeQA/8K93BDIzALMzHbE26IwG7IAdOz3NAY52DKt4sbauci5GC/wJXcMAYP9b1B3AzHYaZvkBkvcEPtvIQcLD+pjMNGn95dUZzUwJmNzz0fPaqc95CDvTR69C8RCzLptHsZ8rl3o0eVo4KQKKcsleMMTM9XjwoSCZXjNEzPV48KQjbCFX9+rBqVo5mCsEHyOTb+2lE5XJACqBxNnbI2QJ+yMqKCRELlcFMvgMrhHlIAlcMFKYDKMbimvg7eg90reH3JKZ1lcDFUjsE19VMwvc483AYXI/1u8wWZpqn7COkRFcQ9pAAqiAtSABWE+D/1zKggkVA5BtfUySwXsvjtkOVwFlSOwfWQPi71voazkF7HBQF9FOQVnIX0Ok0XhEzb1H3K6gkVJBIqxyCbemlUjsH1kBpQOVyQAqgcg2vqnlzsERVkWjz93iMqCPH0e2ZUEPeQAqggLkgBVBDi6ffMqCCRUDkG19SJ57J6QgXJOdvr6fe/qCA5C+Lp97+oIMTT75lRQSKhcgyyqZdG5RhcD6kBlcMFKYDKMbim7snFHlFBpsXT7z2ighBPv2dGBXEPKYAK4oIUQAUhnn7PjAoSCZVjcE29BlQO95ACqBwuSAFUDjf1AqgcbuoFUDmaKkgL91xspiCt3JXUBSkoP4iM41NWISfd2Zq4qVeGC/IflkIujbFm9CgfoW6krG413idrIb8Mx31xkZWTMBehbjX+AnKwvBg0T65A7ifJouRavIvZuM8QN+NfbLmKvrgPuwWhW+C8CbdcBRc5SX8gLn4yL47CtB/Kr45Oc2l2Vs7DtM+d3BABLgfEAc97ySMWhUcKz+k5GjuzpKPjMTdEgZ/fu4uC7YfR4XJ53UXBeF0nFPwPNy2b9xNy6bmIy+btgBw7MzALMx2CIem+q5L8qBhlYUmOtTv2Jo52Lld6E0ZfevUGDL/0apdV8Di8Ch/ASe/KmuQYOdZjkGM3xhhjjDHGGGOMMSVZWPgNn8MSr2OOQdkAAAAASUVORK5CYII=">
         <strong>Album</strong>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader">
@@ -81,7 +81,7 @@
       <div class="container">
         <div class="row">
           <% for(const file of svg) { %>
-          <div class="col-md-4 p-3">
+          <div class="col-md-6 col-lg-4 p-2">
             <div class="card box-shadow">
               <img class="card-img-top" src="<%= file.img %>">
               <div class="card-body">
@@ -89,7 +89,8 @@
                   <input type="text" class="form-control" aria-describedby="helper" placeholder="Enter link"
                     name="files[<%= file.filename %>][<%= file.count %>][link]">
                   <small id="helper" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  <input type="hidden" name="files[<%= file.filename %>][<%= file.count %>][img]" value="<%= file.img %>">
+                  <input type="hidden" name="files[<%= file.filename %>][<%= file.count %>][img]"
+                    value="<%= file.img %>">
                 </div>
                 <div class="d-flex justify-content-end">
                   <small class="text-muted">
