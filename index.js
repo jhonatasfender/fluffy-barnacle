@@ -67,23 +67,33 @@ app.post('/replace', (request, response) => {
 
   request.on('end', () => {
     let list = [],
-      count = 0;
-    for (const line of chunks.toString().split('\n')) {
+      count = 0,
+      split_n = chunks.toString().split('\n');
+
+    split_n.map((line, index, all) => {
       let struct = line.split(/[\[\]]+/);
-      if (list[count] === undefined) {
-        list[count] = {
-          fileName: struct[1],
-          data: []
+      if (struct !== undefined && line.length && struct[4]) {
+        if (list[count] === undefined) {
+          list[count] = {
+            fileName: struct[1],
+            data: {}
+          }
         }
+        let removeCharacter = struct[4].toString().replace(/^=|\r$/g, '');
+
+        list[count].data[struct[3]] = removeCharacter;
+
+        let valid = list[count].data.link &&
+          list[count].data.img &&
+          list[count].data.originalname;
+
+        valid && count++;
       }
-      if (list[count].data[struct[2]] === undefined) {
-        list[count].data[struct[2]] = {};
-      }
-      list[count].data[struct[2]][struct[3]] = struct[4];
+    })
+
+    if (split_n.length == list.length) {
+      console.log(list, split_n.length)
     }
-    // files[file-1559468328564-t2r7i][1][link]=\r
-    // files[file-1559468328564-t2r7i][1][img]=data
-    console.log(list);
   })
 })
 
